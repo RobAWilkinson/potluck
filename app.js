@@ -17,7 +17,7 @@ var express = require('express'),
   methodOverride = require('method-override');
 
 // this connects our app to our local mongodb
-mongoose.connect('mongodb://localhost:27017/potluck');
+mongoose.connect('mongodb://foo:bar@ds031892.mongolab.com:31892/potluck');
 
 // create a model, remember a model is a representation of our database
 // this sets up our schema
