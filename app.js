@@ -98,7 +98,7 @@ app.get('/blogs/:id', function(request,response){
     if(error){
       response.send(error);
     }
-    response.render('/blogs/show', {
+    response.render('blogs/show', {
       title: blog.title,
       blog: blog
     });

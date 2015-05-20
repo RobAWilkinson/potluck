@@ -8,7 +8,7 @@ block content
       each blog in blogs
         li
           h3
-            a(href= '/blog/#{blog._id}')= blog.title
+            a(href= '/blogs/#{blog._id}')= blog.title
           p= blog.content
           span= blog.createdAt
 
