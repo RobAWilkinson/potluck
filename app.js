@@ -18,3 +18,22 @@ var express = require('express'),
 
 // this connects our app to our local mongodb
 mongoose.connect('mongodb://localhost:27017/potluck');
+
+// create a model, remember a model is a representation of our database
+var Blog = mongoose.model( 'Blog', {
+    title: String,
+    content: String,
+    createdAt: {
+      type: Date,
+      default: Date.now
+    }
+});
+
+// we need to use app now to refer back to our express app and have it do those
+// cool things for us
+// two underscores before dirname
+// we are telling it to look for the directoy views
+app.set('views', path.join(__dirname, 'views'));
+// we want to set it to use jade, a more syntactic HTML that is defaulted with
+// express
+app.set('view engine', 'jade');
