@@ -15,3 +15,6 @@ var express = require('express'),
   bodyparser = require('body-parser')
   // simulate PUT & DELETE
   methodOverride = require('method-override');
+
+// this connects our app to our local mongodb
+mongoose.connect('mongodb://localhost:27017/potluck');
