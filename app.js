@@ -105,6 +105,19 @@ app.get('/blogs/:id', function(request,response){
   });
 });
 
+// EDIT
+app.get('/blogs/:id/edit', function(request,response){
+  Blog.findOne({_id: request.params.id}, function(error,blog){
+    if(error){
+      response.send(error);
+    }
+    response.render('blogs/edit',{
+      title: 'Edit this blog',
+      blog: blog
+    });
+  });
+})
+
 
 // defining our host
 app.listen(3000);
