@@ -118,6 +118,19 @@ app.get('/blogs/:id/edit', function(request,response){
   });
 })
 
+// UPDATE
+app.put('/blogs/:id', function(request,response){
+  Blog.update({_id: request.params.id}, {
+    // to call on the bodyParser
+    title: request.body.title,
+    content: request.body.content
+  }, function(error, blog){
+      if(error){
+        response.send(error);
+      }
+      response.redirect('/');
+  });
+})
 
 // defining our host
 app.listen(3000);
