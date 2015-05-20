@@ -69,30 +69,41 @@ app.get('/', function(request, response){
   });
 });
 
-// new
-  app.get('/blogs/new', function(request, response){
-    response.render('blogs/new', {
-      title: "Create a blog"
+// NEW
+app.get('/blogs/new', function(request, response){
+  response.render('blogs/new', {
+    title: "Create a blog"
+  });
+});
+
+// CREATE
+app.post('/blogs', function(request,response){
+  // the Blog is calling on our model
+  var blog= new Blog();
+  // the body parser middleware allows us to call on the body.title
+  blog.title = request.body.title;
+  blog.content = request.body.content;
+  // we don't need to return anything, but we want to check for an error
+  blog.save(function(error){
+    if(error){
+      response.send(error);
+    }
+    response.redirect('/');
+  });
+});
+
+// SHOW
+app.get('/blogs/:id', function(request,response){
+  Blog.findOne({_id: request.params.id}, function(error,blog){
+    if(error){
+      response.send(error);
+    }
+    response.render('/blogs/show', {
+      title: blog.title,
+      blogs: blog
     });
   });
-
-// create
-  app.post('/blogs', function(request,response){
-    // the Blog is calling on our model
-    var blog= new Blog();
-    // the body parser middleware allows us to call on the body.title
-    blog.title = request.body.title;
-    blog.content = request.body.content;
-    // we don't need to return anything, but we want to check for an error
-    blog.save(function(error){
-      if(error){
-        response.send(error);
-      }
-      response.redirect('/');
-    });
-  });
-
-
+});
 
 
 // defining our host
