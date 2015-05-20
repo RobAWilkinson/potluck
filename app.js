@@ -75,8 +75,21 @@ app.get('/', function(request, response){
       title: "Create a blog"
     });
   });
-// create
 
+// create
+  app.post('/blogs', function(request,response){
+    // the Blog is calling on our model
+    var blog= new Blog();
+    // the body parser middleware allows us to call on the body.title
+    blog.title = request.body.title;
+    blog.content = request.body.content;
+    // we don't need to return anything, but we want to check for an error
+    blog.save(function(error){
+      if(error){
+        response.send(error);
+      }
+    });
+  });
 
 
 
