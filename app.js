@@ -133,7 +133,7 @@ app.put('/blogs/:id', function(request,response){
 });
 
 // DESTROY
-app.delete('/blogs/:id', fucntion(request,response){
+app.delete('/blogs/:id', function(request,response){
   Blog.findByIdAndRemove(request.params.id, function(error){
     if(error){
       response.send(error);
