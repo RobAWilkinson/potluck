@@ -61,12 +61,25 @@ app.get('/', function(request, response){
       // normally include this
       response.send(error);
     }
-    response.render('blogs/index', {title: 'Blogs',
+    response.render('blogs/index', {
+      title: 'Blogs',
       // the key can be whatever you want, this sends back all our blogs
       blogs:blogs
     });
   });
 });
+
+// new
+  app.get('/blogs/new', function(request, response){
+    response.render('blogs/new', {
+      title: "Create a blog"
+    });
+  });
+// create
+
+
+
+
 
 // defining our host
 app.listen(3000);
