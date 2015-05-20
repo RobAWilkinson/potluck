@@ -88,6 +88,7 @@ app.get('/', function(request, response){
       if(error){
         response.send(error);
       }
+      response.redirect('/');
     });
   });
 
