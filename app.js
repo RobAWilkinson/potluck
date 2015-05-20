@@ -52,7 +52,21 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride('_method'));
 
 // Establish the routes for our app
-app.get('/', function(request, response))
+app.get('/', function(request, response){
+  // our model name is Blog, we want all the posts return, the params are
+  // the specifics we want returned
+  Blog.find(function(error,blogs){
+    if(error){
+      // this sends back the error message, fine in dev environment so don't
+      // normally include this
+      response.send(error);
+    }
+    response.render('blogs/index', {title: 'Blogs',
+      // the key can be whatever you want, this sends back all our blogs
+      blogs:blogs
+    });
+  });
+});
 
 // defining our host
 app.listen(3000);
