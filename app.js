@@ -130,7 +130,17 @@ app.put('/blogs/:id', function(request,response){
       }
       response.redirect('/');
   });
-})
+});
+
+// DESTROY
+app.delete('/blogs/:id', fucntion(request,response){
+  Blog.findByIdAndRemove(request.params.id, function(error){
+    if(error){
+      response.send(error);
+    }
+    response.redirect('/');
+  });
+});
 
 // defining our host
 app.listen(3000);
