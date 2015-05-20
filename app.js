@@ -100,7 +100,7 @@ app.get('/blogs/:id', function(request,response){
     }
     response.render('/blogs/show', {
       title: blog.title,
-      blogs: blog
+      blog: blog
     });
   });
 });
