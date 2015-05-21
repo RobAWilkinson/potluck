@@ -20,6 +20,9 @@ var express = require('express'),
 // changed this to a remote db
 mongoose.connect('mongodb://foo:bar@ds031892.mongolab.com:31892/potluck');
 
+// stylesheet
+app.use(express.static(path.join(__dirname, 'public')));
+
 // create a model, remember a model is a representation of our database
 // this sets up our schema
 var Dish = mongoose.model( 'Dishes', {
