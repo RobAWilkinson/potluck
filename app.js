@@ -123,8 +123,8 @@ app.get('/dishes/:id/edit', function(request,response){
 app.put('/dishes/:id', function(request,response){
   Dish.update({_id: request.params.id}, {
     // to call on the bodyParser
-    dish.description = request.body.description;
-    dish.student = request.body.student;
+    dish: request.body.description,
+    student: request.body.student
   }, function(error, blog){
       if(error){
         response.send(error);
