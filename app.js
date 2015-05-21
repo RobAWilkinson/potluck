@@ -1,7 +1,5 @@
 // brings in the module to our code
 var express = require('express'),
-  // for serving a basic web page app
-  http = require('http');
 // initialize express application
   app = express(),
   // path is a core module built into express
@@ -21,26 +19,6 @@ var express = require('express'),
 // this connects our app to our local mongodb
 // changed this to a remote db
 mongoose.connect('mongodb://foo:bar@ds031892.mongolab.com:31892/potluck');
-// Here we find an appropriate database to connect to, defaulting to
-// localhost if we don't find one.
-var uristring =
-process.env.MONGOLAB_URI ||
-process.env.MONGOHQ_URL ||
-'mongodb://localhost/5000';
-
-// The http server will listen to an appropriate port, or default to
-// port 5000.
-var theport = process.env.PORT || 5000;
-
-// Makes connection asynchronously.  Mongoose will queue up database
-// operations and release them when the connection is complete.
-mongoose.connect(uristring, function (err, res) {
-  if (err) {
-  console.log ('ERROR connecting to: ' + uristring + '. ' + err);
-  } else {
-  console.log ('Succeeded connected to: ' + uristring);
-  }
-});
 
 // stylesheet
 app.use(express.static(path.join(__dirname, 'public')));
@@ -54,12 +32,6 @@ var Dish = mongoose.model( 'Dishes', {
       type: Date,
       default: Date.now
     }
-});
-
-// heroku
-app.set('port', (process.env.PORT || 5000));
-app.get("/", function(request,response){
-  response.send(cool());
 });
 
 // we need to use app now to refer back to our express app and have it do those
@@ -175,6 +147,5 @@ app.delete('/dishes/:id', function(request,response){
 });
 
 // defining our host
-app.listen(app.get("port"), function(){
-  console.log("Node app is running on port:" + app.get('port'))
-});
+app.listen(3000);
+console.log('App is listening on port 3000');
