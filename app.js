@@ -3,7 +3,7 @@ var express = require('express'),
 // initialize express application
   app = express(),
   // new module for heroku deploy
-  var cool = require('cool-ascii-faces');
+  cool = require('cool-ascii-faces');
   // path is a core module built into express
   path = require('path'),
   // an ORM, allows us to write JS or noco using JS, without writing pure
