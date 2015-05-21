@@ -23,7 +23,6 @@ mongoose.connect('mongodb://foo:bar@ds031892.mongolab.com:31892/potluck');
 // create a model, remember a model is a representation of our database
 // this sets up our schema
 var Dish = mongoose.model( 'Dishes', {
-    title: String,
     student: String,
     description: String,
     createdAt: {
@@ -64,7 +63,7 @@ app.get('/', function(request, response){
       response.send(error);
     }
     response.render('dishes/index', {
-      title: 'Dishes',
+      description: 'Dishes',
       // the key can be whatever you want, this sends back all our blogs
       dishes:dishes
     });
@@ -74,7 +73,7 @@ app.get('/', function(request, response){
 // NEW
 app.get('/dishes/new', function(request, response){
   response.render('dishes/new', {
-    title: "Create a dish"
+    description: "Create a dish"
   });
 });
 
@@ -83,9 +82,8 @@ app.post('/dishes', function(request,response){
   // the Blog is calling on our model
   var dish= new Dish();
   // the body parser middleware allows us to call on the body.title
-  dish.title = request.body.title;
-  dish.student = request.body.student;
   dish.description = request.body.description;
+  dish.student = request.body.student;
   // we don't need to return anything, but we want to check for an error
   blog.save(function(error){
     if(error){
@@ -102,7 +100,7 @@ app.get('/dishes/:id', function(request,response){
       response.send(error);
     }
     response.render('dishes/show', {
-      title: dish.title,
+      description: dish.description,
       dish: dish
     });
   });
@@ -125,9 +123,8 @@ app.get('/dishes/:id/edit', function(request,response){
 app.put('/dishes/:id', function(request,response){
   Dish.update({_id: request.params.id}, {
     // to call on the bodyParser
-    dish.title = request.body.title;
-    dish.student = request.body.student;
     dish.description = request.body.description;
+    dish.student = request.body.student;
   }, function(error, blog){
       if(error){
         response.send(error);
@@ -137,7 +134,7 @@ app.put('/dishes/:id', function(request,response){
 });
 
 // DESTROY
-app.delete('/blogs/:id', function(request,response){
+app.delete('/dishes/:id', function(request,response){
   Dish.findByIdAndRemove(request.params.id, function(error){
     if(error){
       response.send(error);

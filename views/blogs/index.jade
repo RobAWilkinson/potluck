@@ -8,7 +8,7 @@ block content
       each dish in dishes
         li
           h3
-            a(href= '/dishes/#{dish._id}')= dish.title
-          p= dish.content
+            a(href= '/dishes/#{dish._id}')= dish.description
+          p= dish.student
           span= dish.createdAt
 

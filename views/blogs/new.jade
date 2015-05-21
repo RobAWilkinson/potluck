@@ -4,11 +4,9 @@ block content
   h1= title
   form(name='add-dish' method='POST' action='/dishes')
     p Dish:
-      input(type='text' placeholder='Dish' name='title')
+      input(type='text' placeholder='Dish' name='description')
     p Student:
       textarea(placeholder='Who is bringing it?' name='student')
-    p Description:
-      textarea(placeholder='What's in it?' name='description')
     p
       button(type='submit') Add blog post
 

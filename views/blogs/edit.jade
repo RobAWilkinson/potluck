@@ -3,11 +3,9 @@ block content
   h1= title
   form(method='POST' name='edit-dish' action='/dishes/#{dish._id}?_method=PUT')
     p Dish:
-      input(type='text' placeholder='Dish' name='title')
+      input(type='text' placeholder='Dish' name='description')
     p Student:
       textarea(placeholder='Who is bringing it?' name='student')
-    p Description:
-      textarea(placeholder='What's in it?' name='description')
     p
       button(type='submit') Update blog
   a(href='/') Back to home

@@ -1,7 +1,7 @@
 extends ../layout
 block content
   h1= title
-  p= dish.dish_name
+  p= dish.description
   ul
     li
       a(href='/dishes/#{dish._id}/edit') Edit this dish
