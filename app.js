@@ -56,7 +56,7 @@ app.use(methodOverride('_method'));
 app.get('/', function(request, response){
   // our model name is Blog, we want all the posts return, the params are
   // the specifics we want returned
-  Blog.find(function(error,blogs){
+  Dish.find(function(error,dishes){
     if(error){
       // this sends back the error message, fine in dev environment so don't
       // normally include this
@@ -85,7 +85,7 @@ app.post('/dishes', function(request,response){
   dish.description = request.body.description;
   dish.student = request.body.student;
   // we don't need to return anything, but we want to check for an error
-  blog.save(function(error){
+  dish.save(function(error){
     if(error){
       response.send(error);
     }
@@ -113,7 +113,7 @@ app.get('/dishes/:id/edit', function(request,response){
       response.send(error);
     }
     response.render('dishes/edit',{
-      title: 'Edit this blog',
+      title: 'Edit this dish',
       dish: dish
     });
   });
@@ -125,7 +125,7 @@ app.put('/dishes/:id', function(request,response){
     // to call on the bodyParser
     dish: request.body.description,
     student: request.body.student
-  }, function(error, blog){
+  }, function(error, dish){
       if(error){
         response.send(error);
       }
