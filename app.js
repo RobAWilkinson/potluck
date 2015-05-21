@@ -2,6 +2,8 @@
 var express = require('express'),
 // initialize express application
   app = express(),
+  // new module for heroku deploy
+  var cool = require('cool-ascii-faces');
   // path is a core module built into express
   path = require('path'),
   // an ORM, allows us to write JS or noco using JS, without writing pure
@@ -32,6 +34,12 @@ var Dish = mongoose.model( 'Dishes', {
       type: Date,
       default: Date.now
     }
+});
+
+// HEROKU
+app.set('port', (process.env.PORT || 5000));
+app.get("/", function(request,response){
+  response.send(cool());
 });
 
 // we need to use app now to refer back to our express app and have it do those
@@ -147,5 +155,6 @@ app.delete('/dishes/:id', function(request,response){
 });
 
 // defining our host
-app.listen(3000);
-console.log('App is listening on port 3000');
+app.listen(app.get("port"), function(){
+  console.log("Node app is running on port:" + app.get('port'))
+});
