@@ -2,11 +2,13 @@ extends ../layout
 
 block content
   h1= title
-  form(name='add-blog' method='POST' action='/blogs')
-    p Title:
-      input(type='text' placeholder='Title' name='title')
-    p Body:
-      textarea(placeholder='Write your blog' name='content')
+  form(name='add-dish' method='POST' action='/dishes')
+    p Dish:
+      input(type='text' placeholder='Dish' name='title')
+    p Student:
+      textarea(placeholder='Who is bringing it?' name='student')
+    p Description:
+      textarea(placeholder='What's in it?' name='description')
     p
       button(type='submit') Add blog post
 

@@ -17,13 +17,15 @@ var express = require('express'),
   methodOverride = require('method-override');
 
 // this connects our app to our local mongodb
+// changed this to a remote db
 mongoose.connect('mongodb://foo:bar@ds031892.mongolab.com:31892/potluck');
 
 // create a model, remember a model is a representation of our database
 // this sets up our schema
-var Blog = mongoose.model( 'Blog', {
+var Dish = mongoose.model( 'Dishes', {
     title: String,
-    content: String,
+    student: String,
+    description: String,
     createdAt: {
       type: Date,
       default: Date.now
@@ -61,28 +63,29 @@ app.get('/', function(request, response){
       // normally include this
       response.send(error);
     }
-    response.render('blogs/index', {
-      title: 'Blogs',
+    response.render('dishes/index', {
+      title: 'Dishes',
       // the key can be whatever you want, this sends back all our blogs
-      blogs:blogs
+      dishes:dishes
     });
   });
 });
 
 // NEW
-app.get('/blogs/new', function(request, response){
-  response.render('blogs/new', {
-    title: "Create a blog"
+app.get('/dishes/new', function(request, response){
+  response.render('dishes/new', {
+    title: "Create a dish"
   });
 });
 
 // CREATE
-app.post('/blogs', function(request,response){
+app.post('/dishes', function(request,response){
   // the Blog is calling on our model
-  var blog= new Blog();
+  var dish= new Dish();
   // the body parser middleware allows us to call on the body.title
-  blog.title = request.body.title;
-  blog.content = request.body.content;
+  dish.title = request.body.title;
+  dish.student = request.body.student;
+  dish.description = request.body.description;
   // we don't need to return anything, but we want to check for an error
   blog.save(function(error){
     if(error){
@@ -93,37 +96,38 @@ app.post('/blogs', function(request,response){
 });
 
 // SHOW
-app.get('/blogs/:id', function(request,response){
-  Blog.findOne({_id: request.params.id}, function(error,blog){
+app.get('/dishes/:id', function(request,response){
+  Dish.findOne({_id: request.params.id}, function(error,dish){
     if(error){
       response.send(error);
     }
-    response.render('blogs/show', {
-      title: blog.title,
-      blog: blog
+    response.render('dishes/show', {
+      title: dish.title,
+      dish: dish
     });
   });
 });
 
 // EDIT
-app.get('/blogs/:id/edit', function(request,response){
-  Blog.findOne({_id: request.params.id}, function(error,blog){
+app.get('/dishes/:id/edit', function(request,response){
+  Dish.findOne({_id: request.params.id}, function(error,dish){
     if(error){
       response.send(error);
     }
-    response.render('blogs/edit',{
+    response.render('dishes/edit',{
       title: 'Edit this blog',
-      blog: blog
+      dish: dish
     });
   });
 })
 
 // UPDATE
-app.put('/blogs/:id', function(request,response){
-  Blog.update({_id: request.params.id}, {
+app.put('/dishes/:id', function(request,response){
+  Dish.update({_id: request.params.id}, {
     // to call on the bodyParser
-    title: request.body.title,
-    content: request.body.content
+    dish.title = request.body.title;
+    dish.student = request.body.student;
+    dish.description = request.body.description;
   }, function(error, blog){
       if(error){
         response.send(error);
@@ -134,7 +138,7 @@ app.put('/blogs/:id', function(request,response){
 
 // DESTROY
 app.delete('/blogs/:id', function(request,response){
-  Blog.findByIdAndRemove(request.params.id, function(error){
+  Dish.findByIdAndRemove(request.params.id, function(error){
     if(error){
       response.send(error);
     }
