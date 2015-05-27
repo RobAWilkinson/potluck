@@ -151,5 +151,7 @@ app.delete('/dishes/:id', function(request,response){
 });
 
 // defining our host
-server.listen(3000);
-console.log('App is listening on port 3000');
+var port = process.env.PORT || 3000;
+server.listen(port,function(){
+  console.log('App is listening on port' + port);
+});
