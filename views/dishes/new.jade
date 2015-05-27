@@ -4,10 +4,11 @@ block content
   h1= title
   form(name='add-dish' method='POST' action='/dishes')
     p Dish:
-      input(type='text' placeholder='Dish' name='description')
+     input(type='text' placeholder='Dish it to me' name='description')
     p Student:
-      textarea(placeholder='Who is bringing it?' name='student')
+      textarea(placeholder='Who dis?' name='student')
     p
+      .button
       button(type='submit') Add blog post
 
   a(href='/') Back to home
