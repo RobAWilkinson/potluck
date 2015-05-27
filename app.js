@@ -22,7 +22,7 @@ var express = require('express'),
 var server = http.createServer(app);
 // this connects our app to our local mongodb
 // changed this to a remote db
-mongoose.connect('mongodb://foo:bar@ds031892.mongolab.com:31892/potluck');
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://foo:bar@ds031892.mongolab.com:31892/potluck');
 
 // stylesheet
 app.use(express.static(path.join(__dirname, 'public')));
