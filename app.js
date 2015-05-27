@@ -1,5 +1,6 @@
 // brings in the module to our code
 var express = require('express'),
+  http = require('http'),
 // initialize express application
   app = express(),
   // path is a core module built into express
@@ -16,6 +17,9 @@ var express = require('express'),
   // simulate PUT & DELETE
   methodOverride = require('method-override');
 
+
+// create HTTP server
+var server = http.createServer(app);
 // this connects our app to our local mongodb
 // changed this to a remote db
 mongoose.connect('mongodb://foo:bar@ds031892.mongolab.com:31892/potluck');
@@ -147,5 +151,5 @@ app.delete('/dishes/:id', function(request,response){
 });
 
 // defining our host
-app.listen(3000);
+server.listen(3000);
 console.log('App is listening on port 3000');
