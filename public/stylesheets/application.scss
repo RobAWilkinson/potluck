@@ -1,3 +1,5 @@
+@import "bourbon/bourbon";
+
 body {
   background-image: url("http://24.media.tumblr.com/d1032f3c1c91093f926cbfaa83bd3b04/tumblr_mftnjfzkpA1qjitjco1_500.png");
   font-family: 'Righteous', cursive;
@@ -21,7 +23,7 @@ h2 {
 
 /* unvisited link */
 a:link {
-    color: #f35445;
+    color: #d45186;
 };
 
 /* visited link */
@@ -31,10 +33,10 @@ a:visited {
 
 /* mouse over link */
 a:hover {
-    color: #e1bd25;
+    color: #63c5ae;
 };
 
 /* selected link */
 a:active {
-    color: #0000FF;
+    color: #577d87;
 };
