@@ -4,9 +4,7 @@ block content
   div
     h1= title
     a(href= 'dishes/new') Contribute a dish
-    ul
       each dish in dishes
-        li
           h3
             a(href= '/dishes/#{dish._id}')= dish.description
           p= dish.student

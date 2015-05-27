@@ -2,10 +2,7 @@ extends ../layout
 block content
   h1= title
   p= dish.description
-  ul
-    li
       a(href='/dishes/#{dish._id}/edit') Edit this dish
-    li
       form(method='POST' action='/dishes/#{dish._id}?_method=DELETE')
         button(type='submit') Delete dish
 
