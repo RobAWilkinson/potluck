@@ -1,0 +1,17 @@
+body {
+  background-image: url("http://24.media.tumblr.com/d1032f3c1c91093f926cbfaa83bd3b04/tumblr_mftnjfzkpA1qjitjco1_500.png");
+  font-family: 'Righteous', cursive;
+  text-align: center;
+};
+
+h1 {
+  color: #f42957;
+}
+
+#container{
+    display: inline;
+    background-color: #FFAA3B;
+    padding: 0.5em 1em;
+    box-decoration-break: clone;
+    "bounce": true;
+};
