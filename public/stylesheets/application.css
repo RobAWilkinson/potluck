@@ -1,7 +1,4 @@
-@import "bourbon/bourbon";
-
 body {
-  background-image: url("http://24.media.tumblr.com/d1032f3c1c91093f926cbfaa83bd3b04/tumblr_mftnjfzkpA1qjitjco1_500.png");
   font-family: 'Righteous', cursive;
   text-align: center;
   padding-top: 20vh;
@@ -13,6 +10,16 @@ body {
 h2 {
   font-size: golden-ratio(14px,  1);
   color: #f35445;
+};
+
+p{
+  font-family: 'Righteous', cursive;
+  text-align: center;
+  padding-top: 20vh;
+  padding-bottom: 10px;
+  padding-left: 3em;
+  color: #f42957;
+
 };
 
 #container{
@@ -40,3 +47,21 @@ a:hover {
 a:active {
     color: #577d87;
 };
+
+.btn {
+  -webkit-border-radius: 58;
+  -moz-border-radius: 58;
+  border-radius: 58px;
+  font-family: Arial;
+  color: #301699;
+  font-size: 19px;
+  background: #b6c25d;
+  padding: 11px 18px 10px 20px;
+  border: solid #c777bb 11px;
+  text-decoration: none;
+};
+
+.btn:hover {
+  background: #5b8aa8;
+  text-decoration: none;
+}

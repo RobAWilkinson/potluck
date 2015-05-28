@@ -1,5 +1,6 @@
 extends ../layout
 block content
+  body
   h1= title
   form(method='POST' name='edit-dish' action='/dishes/#{dish._id}?_method=PUT')
     p Dish:
@@ -7,6 +8,6 @@ block content
     p Student:
       textarea(placeholder='Who is bringing it?' name='student')
     p
-      button(type='submit') Update blog
+      button(type='submit' class='btn') Update blog
   a(href='/') Back to home
 
